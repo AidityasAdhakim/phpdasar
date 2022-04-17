@@ -1,13 +1,6 @@
 <?php 
-// koneksi ke database
-$db = mysqli_connect("localhost", "root", "", "phpdasar");
-
-// mengambil data dari tabel mahasiswa / query data
-
-$result = mysqli_query($db,"SELECT * FROM mahasiswa");
-
-// ambil data objek dari result
-
+require 'functions.php';
+$mhs = query("SELECT * FROM mahasiswa");
 
 ?>
 
@@ -32,18 +25,27 @@ $result = mysqli_query($db,"SELECT * FROM mahasiswa");
         <th>Nama</th>
         <th>Jurusan</th>
     </tr>
-
+    <?php $i=1; ?>
+    
+    <?php foreach ($mhs as $row) : ?>
+        
     <tr>
-        <td>1</td>
+        <td><?php echo $i; $i++; ?>
+        </td>
         <td>
             <a href="">Ubah</a> |
             <a href="">Hapus</a>
         </td>
-        <td>105220045</td>
-        <td>Aidityas Adhakim</td>
-        <td>Ilmu Komputer</td>
-
+        <td><?php echo $row["nim"]; ?>
+        </td>
+        <td><?php echo $row["nama"]; ?>
+        </td>
+        <td><?php echo $row["jurusan"]; ?>
+        </td>
+    
     </tr>
+    <?php endforeach; ?>
+    
 
     </table>
 </body>
