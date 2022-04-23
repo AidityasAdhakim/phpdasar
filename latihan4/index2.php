@@ -43,7 +43,7 @@ $result = mysqli_query($db,"SELECT * FROM mahasiswa");
     <?php $i=1; ?>
     
     <?php while( $row = mysqli_fetch_assoc($result) ): ?>
-        
+    <p>Hi</p>
     <tr>
         <td><?php echo $i; $i++; ?>
         </td>
