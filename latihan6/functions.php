@@ -16,9 +16,9 @@ $db = mysqli_connect("localhost", "root", "", "phpdasar");
 
 function tambah($data){
     global $db;
-    $nama = $data["nama"];
-    $nim = $data["nim"];
-    $jurusan = $data["jurusan"];
+    $nama = htmlspecialchars($data["nama"]);
+    $nim = htmlspecialchars($data["nim"]);
+    $jurusan = htmlspecialchars($data["jurusan"]);
 
         // query insert data
         mysqli_query($db, "INSERT INTO mahasiswa VALUES ('','$nama','$nim','$jurusan')");
@@ -40,3 +40,27 @@ function search($data){
 }
 ?>
 
+<?php 
+
+    function hapus($id){
+        global $db;
+        mysqli_query($db, "DELETE FROM mahasiswa WHERE id = $id");
+    }
+
+    function ubah($data){
+        global $db;
+        $id = $data["id"];
+        $nama = htmlspecialchars($data["nama"]);
+        $nim = htmlspecialchars($data["nim"]);
+        $jurusan = htmlspecialchars($data["jurusan"]);
+    
+            // query insert data
+            mysqli_query($db, "UPDATE mahasiswa SET
+                                nim = '$nim',
+                                nama = '$nama',
+                                jurusan = '$jurusan'
+                                WHERE id = $id");
+        return mysqli_affected_rows($db);
+    }
+
+?>
