@@ -1,6 +1,14 @@
 <?php 
 require 'functions.php';
 $mhs = query("SELECT * FROM mahasiswa");
+
+// Ketika tombol cari ditekan
+if( isset($_POST["search"]) ){
+    $mhs = cari($_POST["keyword"]);
+}
+if(isset($_POST['home'])){
+    $mhs = query("SELECT * FROM mahasiswa");
+}
 ?>
 
 
@@ -18,6 +26,21 @@ $mhs = query("SELECT * FROM mahasiswa");
     <a href="tambah.php">Tambah data Mahasiswa</a>
     <br>
     <br>
+    <form action="" method="post">
+        <button type="submit" name="home">Home</button>
+        <br> <br>
+    </form>
+
+    <form action="" method="post">
+        <label for="search">Cari : </label>
+        <input type="text" name="keyword" size="40" placeholder="Masukkan Nama.." autocomplete="off">
+        <button type="submit" name="search">Search</button>
+        <br>
+        <br>
+        <?php if(isset($_POST['search'])){
+            echo "Hasil Pencarian Keyword " . $_POST["keyword"];
+        } ?>
+    </form>
 
     <table border="3" cellpadding="10" cellspacing="0" >
        

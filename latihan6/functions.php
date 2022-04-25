@@ -63,9 +63,4 @@ function search($data){
         return mysqli_affected_rows($db);
     }
 
-    function cari($keyword){
-        $query = "SELECT * FROM mahasiswa WHERE nama LIKE '%$keyword%'";
-        return query($query); 
-    }
-
 ?>
