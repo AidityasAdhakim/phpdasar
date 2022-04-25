@@ -1,0 +1,14 @@
+body{
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.container {
+    align-content: center;
+    background-color: beige;
+    margin-right: 15%;
+    padding-right: 10%;
+    margin-left: 15%;
+    padding-left: 10%;
+}
