@@ -37,7 +37,7 @@ $mhs = query("SELECT * FROM mahasiswa");
         </td>
         <td>
             <a href="">Ubah</a> |
-            <a href="">Hapus</a>
+            <a href="hapus.php?id=<?= $row["id"] ?>" onclick="return confirm('Apakah yakin ingin menghapus?')">Hapus</a>
         </td>
         <td><?php echo $row["nim"]; ?>
         </td>

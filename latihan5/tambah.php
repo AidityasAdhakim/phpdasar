@@ -38,16 +38,16 @@ if(isset($_POST["submit"])){
         <ul>
             <li>
                 <label for="nama">Nama : </label>
-                <input type="text" name="nama" id="nama">
+                <input type="text" name="nama" id="nama" required>
             </li>
 
             <li>
                 <label for="nim">NIM : </label>
-                <input type="text" name="nim" id="nim">
+                <input type="text" name="nim" id="nim" required>
             </li>
             <li>
                 <label for="jurusan">Jurusan : </label>
-                <input type="text" name="jurusan" id="jurusan">
+                <input type="text" name="jurusan" id="jurusan" required>
             </li>
             <li>
                 <button type="submit" name="submit">Tambahkan Data</button>
