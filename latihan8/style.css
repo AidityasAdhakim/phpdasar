@@ -2,9 +2,11 @@ body{
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
+    background-color: lightgray;
 }
 
 .container {
+    position: absolute;
     align-content: center;
     background-color: beige;
     margin-right: 15%;

@@ -63,10 +63,13 @@ function upload(){
                 </script";
     }
 
+    $namaFileBaru = uniqid();
+    $namaFileBaru.='.';
+    $namaFileBaru .= $ekstensiFile;
     // upload file
-    move_uploaded_file($tmpName, 'img/' . $namaFile);
+    move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
 
-    return $namaFile;
+    return $namaFileBaru;
 }
 
 ?>
@@ -96,13 +99,21 @@ function search($data){
         $nama = htmlspecialchars($data["nama"]);
         $nim = htmlspecialchars($data["nim"]);
         $jurusan = htmlspecialchars($data["jurusan"]);
+        $gambarLama = $data["gambar"];
+
+        if($_FILES["gambar"]["error"] === 4){
+            $gambar = $gambarLama;
+        } else {
+            $gambar = upload();
+        }
     
-            // query insert data
-            mysqli_query($db, "UPDATE mahasiswa SET
-                                nim = '$nim',
-                                nama = '$nama',
-                                jurusan = '$jurusan'
-                                WHERE id = $id");
+        // query insert data
+        mysqli_query($db, "UPDATE mahasiswa SET
+                            nim = '$nim',
+                            nama = '$nama',
+                            jurusan = '$jurusan',
+                            gambar = '$gambar'
+                            WHERE id = $id");
         return mysqli_affected_rows($db);
     }
 
