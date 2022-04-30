@@ -7,7 +7,20 @@ if (!isset($_SESSION["login"])){
 }
 
 require 'functions.php';
-$mhs = query("SELECT * FROM mahasiswa");
+
+// pagination
+
+$jumlahDataPerHalaman = 2;
+$jumlahData = count(query("SELECT * FROM mahasiswa"));
+$jumlahHalaman = ceil( $jumlahData / $jumlahDataPerHalaman);
+if( isset($_GET["halaman"]) ){
+    $halamanAktif = $_GET["halaman"];
+} else {
+    $halamanAktif = 1;
+}
+$awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
+
+$mhs = query("SELECT * FROM mahasiswa LIMIT $awalData, $jumlahDataPerHalaman");
 
 // Ketika tombol cari ditekan
 if( isset($_POST["search"]) ){
@@ -56,6 +69,24 @@ if(isset($_POST['home'])){
         <button type="submit" name="logout">Logout</button>
         </a>
     </div>
+
+    <form action="">
+
+        <?php for($i=1;$i<=$jumlahHalaman;$i++): ?>
+            <?php if( $i == $halamanAktif ): ?>
+            <a  style="color: red;" href="?halaman=<?= $i; ?>"><?= $i; ?>  
+            </a>
+            
+            <?php else : ?>
+            <a  href="?halaman=<?= $i; ?>"><?= $i; ?>  
+            </a>
+            <?php endif; ?>
+        <?php endfor; ?>
+            
+        
+
+
+    </form>
 
     <table border="3" cellpadding="10" cellspacing="0" >
        

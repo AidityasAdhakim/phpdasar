@@ -42,8 +42,8 @@ if(isset($_POST['home'])){
 
     <form action="" method="post">
         <label for="search">Cari : </label>
-        <input type="text" name="keyword" size="40" placeholder="Masukkan Nama.." autocomplete="off">
-        <button type="submit" name="search">Search</button>
+        <input type="text" name="keyword" size="40" placeholder="Masukkan Nama.." autocomplete="off" id="keyword">
+        <button type="submit" name="search" id="tombol">Search</button>
         <br>
         <br>
         <?php if(isset($_POST['search'])){
@@ -57,6 +57,7 @@ if(isset($_POST['home'])){
         </a>
     </div>
 
+    <div id="container-table">
     <table border="3" cellpadding="10" cellspacing="0" >
        
     <tr>
@@ -92,5 +93,8 @@ if(isset($_POST['home'])){
 
     </table>
     </div>
+</div>
+
+<script src="js/script.js"></script>
 </body>
 </html>
